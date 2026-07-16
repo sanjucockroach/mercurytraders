@@ -44,7 +44,7 @@ const STEP_FLOW: Step[] = [
 
 const BOT_LINES: Record<Step, string> = {
   greet:
-    "Hi! 👋 I'm the Mercury Traders assistant. I'll collect a few quick details and connect you with our team on WhatsApp for a quote.",
+    "Hi! 👋 I'm the Mercury Traders assistant. I'll collect a few quick details and send them straight to our team on WhatsApp for a quote.",
   ask_name: "Let's start — what's your name?",
   ask_phone: "Great, {name}! What's the best phone number to reach you on?",
   ask_car:
@@ -54,7 +54,7 @@ const BOT_LINES: Record<Step, string> = {
   ask_message:
     "Anything else we should know? (vehicle variant, quantity, urgency — or type 'skip')",
   done:
-    "Perfect! Here's your lead summary. Tap below to send it straight to our team on WhatsApp — we'll respond within a few minutes during working hours.",
+    "Done! Your enquiry has been sent to our team on WhatsApp (+91 84476 66288). We'll respond within a few minutes during working hours (9am–9pm).",
 };
 
 const PLACEHOLDERS: Record<Step, string> = {
@@ -155,9 +155,25 @@ export function LeadChatbot() {
       setStep(nextStep);
 
       if (nextStep === "done") {
+        // AUTO-SEND: open WhatsApp synchronously within the user's submit
+        // gesture so popup blockers don't fire. This must happen BEFORE any
+        // await/setTimeout — the browser only allows window.open() that
+        // originate directly from a user gesture.
+        const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
+          `*New lead from mercurytraders.in*\n\n` +
+            `*Name:* ${nextLead.name}\n` +
+            `*Phone:* ${nextLead.phone}\n` +
+            `*Vehicle:* ${nextLead.car}\n` +
+            `*Part(s) needed:* ${nextLead.part}\n` +
+            (nextLead.message ? `*Notes:* ${nextLead.message}\n` : "") +
+            `\nPlease share availability and pricing. Thank you!`
+        )}`;
+        window.open(url, "_blank", "noopener,noreferrer");
+        setSent(true);
+
         await pushBot(
-          `Thanks ${nextLead.name || "there"}! Compiling your lead…`,
-          600
+          `Thanks ${nextLead.name || "there"}! Sending your enquiry to our team…`,
+          500
         );
         await pushBot(BOT_LINES.done, 800);
       } else {
@@ -178,8 +194,7 @@ export function LeadChatbot() {
     startConversation();
   };
 
-  const buildWhatsAppUrl = () => {
-    const L = lead;
+  const buildWhatsAppUrl = (L: typeof lead = lead) => {
     let msg = `*New lead from mercurytraders.in*\n\n`;
     msg += `*Name:* ${L.name}\n`;
     msg += `*Phone:* ${L.phone}\n`;
@@ -368,27 +383,24 @@ export function LeadChatbot() {
                 </form>
               ) : (
                 <div className="space-y-2">
-                  {!sent ? (
-                    <a
-                      href={buildWhatsAppUrl()}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      onClick={() => setSent(true)}
-                      className="flex items-center justify-center gap-2 w-full h-12 rounded-input bg-primary text-white text-sm font-semibold hover:brightness-110 active:scale-[0.99] transition-all"
-                    >
-                      <MessageCircle className="h-[18px] w-[18px]" />
-                      Send lead via WhatsApp
-                    </a>
-                  ) : (
-                    <button
-                      onClick={handleRestart}
-                      className="flex items-center justify-center gap-2 w-full h-12 rounded-input border border-hairline bg-canvas text-ink text-sm font-medium hover:bg-surface-2 transition-all"
-                    >
-                      Start a new enquiry
-                    </button>
-                  )}
+                  {/* Auto-sent — show confirmation + fallback reopen link */}
+                  <a
+                    href={buildWhatsAppUrl()}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-center gap-2 w-full h-12 rounded-input bg-success/10 border border-success/30 text-success text-sm font-semibold hover:bg-success/15 transition-all"
+                  >
+                    <Check className="h-[18px] w-[18px]" />
+                    Sent — reopen WhatsApp
+                  </a>
+                  <button
+                    onClick={handleRestart}
+                    className="flex items-center justify-center gap-2 w-full h-11 rounded-input border border-hairline bg-canvas text-ink text-sm font-medium hover:bg-surface-2 transition-all"
+                  >
+                    Start a new enquiry
+                  </button>
                   <p className="text-center text-[10px] text-ink-muted">
-                    Opens WhatsApp · +91 84476 66288 · No data stored
+                    Lead sent to +91 84476 66288 · No data stored
                   </p>
                 </div>
               )}

@@ -59,8 +59,8 @@ export function Footer() {
               </div>
             </div>
             <p className="mt-5 text-sm text-canvas/60 leading-relaxed max-w-xs">
-              India&apos;s premium marketplace for genuine automotive spare
-              parts. OEM, OEM-equivalent and aftermarket — fitment-locked to your
+              Delhi&apos;s trusted source for genuine automotive spare parts.
+              OEM, OEM-equivalent and aftermarket — fitment-locked to your
               exact car.
             </p>
             <div className="mt-5 flex items-center gap-2">

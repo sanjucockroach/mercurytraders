@@ -46,13 +46,21 @@ export function MercuryWordmark({
   return (
     <span
       className={cn(
-        "font-display font-bold leading-none",
+        "font-display font-bold leading-none whitespace-nowrap",
         onDark ? "text-canvas" : "text-ink",
         className
       )}
       style={{ letterSpacing: "-0.04em" }}
     >
-      MERCURY
+      MERCURY{" "}
+      <span
+        className={cn(
+          "font-medium",
+          onDark ? "text-canvas/55" : "text-ink-muted"
+        )}
+      >
+        TRADERS
+      </span>
     </span>
   );
 }

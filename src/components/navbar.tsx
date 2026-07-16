@@ -40,10 +40,10 @@ export function Navbar() {
       <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 lg:h-[72px] items-center justify-between gap-4">
           {/* Logo */}
-          <a href="#top" className="flex items-center gap-2.5 group" aria-label="Mercury home">
+          <a href="#top" className="flex items-center gap-2.5 group" aria-label="Mercury Traders home">
             <MercuryMark size={36} />
             <div className="flex flex-col leading-none">
-              <MercuryWordmark className="text-[19px]" />
+              <MercuryWordmark className="text-[15px] sm:text-[19px]" />
               <span className="eyebrow text-ink-muted text-[9px] mt-1 hidden sm:block">
                 Automotive Spare Parts
               </span>
