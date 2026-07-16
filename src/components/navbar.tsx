@@ -82,9 +82,9 @@ export function Navbar() {
           {/* Right actions */}
           <div className="flex items-center gap-1.5">
             <a
-              href="tel:+919000012345"
+              href="tel:+918447666288"
               className="hidden sm:inline-flex items-center justify-center h-11 w-11 rounded-input text-ink hover:bg-surface-2 transition-colors"
-              aria-label="Call Mercury support"
+              aria-label="Call Mercury Traders"
             >
               <Phone className="h-[18px] w-[18px]" />
             </a>

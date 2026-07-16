@@ -101,12 +101,12 @@ export function Footer() {
         {/* bottom bar */}
         <div className="mt-12 pt-6 border-t border-canvas/10 flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="text-xs text-canvas/50 font-mono">
-            © {new Date().getFullYear()} Mercury Smart Parts Pvt. Ltd. · All rights reserved.
+            © {new Date().getFullYear()} Mercury Traders · 1556, A Church Road, Kashmere Gate, Delhi - 110006
           </div>
           <div className="flex items-center gap-4 text-xs text-canvas/50">
-            <span className="font-mono">Made in India</span>
+            <span className="font-mono">Made in Delhi</span>
             <span className="h-3 w-px bg-canvas/20" />
-            <span>GSTIN: 06AABCM1234M1Z5</span>
+            <span>Ph: +91 84476 66288</span>
             <span className="h-3 w-px bg-canvas/20" />
             <span>v1.0.0</span>
           </div>

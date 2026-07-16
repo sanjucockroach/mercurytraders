@@ -33,7 +33,7 @@ type CartState = {
   subtotal: () => number;
 };
 
-const WHATSAPP_NUMBER = "919000012345"; // +91 90000 12345 — Mercury support line
+const WHATSAPP_NUMBER = "918447666288"; // +91 84476 66288 — Mercury Traders
 
 export const useCart = create<CartState>()(
   persist(

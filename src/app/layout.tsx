@@ -22,16 +22,16 @@ const geistMono = Geist_Mono({
   display: "swap",
 });
 
-const siteUrl = "https://mercuryparts.in";
-const siteName = "Mercury";
+const siteUrl = "https://mercurytraders.in";
+const siteName = "Mercury Traders";
 const description =
-  "Mercury — India's premium marketplace for genuine automotive spare parts. Search by car make, model and year. OEM, OEM-equivalent and aftermarket parts from 20+ trusted brands. Fast pan-India delivery, 10-day returns, real warranty.";
+  "Mercury Traders — Delhi's trusted source for genuine automotive spare parts. Search by car make, model and year. OEM, OEM-equivalent and aftermarket parts from 20+ trusted brands. Fast pan-India delivery, 10-day returns, real warranty. Located at Kashmere Gate, Delhi.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Mercury — Genuine Automotive Spare Parts Marketplace",
-    template: "%s · Mercury",
+    default: "Mercury Traders — Genuine Automotive Spare Parts | Delhi",
+    template: "%s · Mercury Traders",
   },
   description,
   keywords: [
@@ -40,18 +40,18 @@ export const metadata: Metadata = {
     "genuine auto parts India",
     "OEM spare parts",
     "aftermarket car parts",
-    "Mercury auto parts",
-    "car spare parts marketplace",
+    "Mercury Traders auto parts",
+    "car spare parts Delhi",
+    "Kashmere Gate auto parts",
     "brake pads",
     "engine parts",
     "suspension parts",
     "car filters",
     "spark plugs",
   ],
-  authors: [{ name: "Mercury" }],
-  creator: "Mercury",
-  publisher: "Mercury",
-  applicationName: "Mercury",
+  authors: [{ name: "Mercury Traders" }],
+  creator: "Mercury Traders",
+  publisher: "Mercury Traders",
   category: "Automotive",
   alternates: {
     canonical: "/",
@@ -61,7 +61,7 @@ export const metadata: Metadata = {
     locale: "en_IN",
     url: siteUrl,
     siteName,
-    title: "Mercury — Genuine Automotive Spare Parts Marketplace",
+    title: "Mercury Traders — Genuine Automotive Spare Parts | Delhi",
     description,
     images: [
       {
@@ -74,10 +74,10 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Mercury — Genuine Automotive Spare Parts",
+    title: "Mercury Traders — Genuine Automotive Spare Parts",
     description,
     images: ["/images/hero-poster.png"],
-    creator: "@mercuryparts",
+    creator: "@mercurytraders",
   },
   icons: {
     icon: [
@@ -109,27 +109,27 @@ export const viewport: Viewport = {
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "AutoPartsStore",
-  name: "Mercury",
+  name: "Mercury Traders",
   description,
   url: siteUrl,
   logo: `${siteUrl}/mercury-logo.svg`,
   image: `${siteUrl}/images/hero-poster.png`,
-  telephone: "+91-90000-12345",
+  telephone: "+91-84476-66288",
   priceRange: "₹₹",
   address: {
     "@type": "PostalAddress",
-    streetAddress: "Mercury House, Sector 32",
-    addressLocality: "Gurugram",
-    addressRegion: "Haryana",
-    postalCode: "122002",
+    streetAddress: "1556, A Church Road, Kashmere Gate",
+    addressLocality: "Delhi",
+    addressRegion: "Delhi",
+    postalCode: "110006",
     addressCountry: "IN",
   },
   areaServed: { "@type": "Country", name: "India" },
   openingHours: "Mo-Sa 09:00-19:00",
   sameAs: [
-    "https://www.facebook.com/mercuryparts",
-    "https://www.instagram.com/mercuryparts",
-    "https://twitter.com/mercuryparts",
+    "https://www.facebook.com/mercurytraders",
+    "https://www.instagram.com/mercurytraders",
+    "https://twitter.com/mercurytraders",
   ],
   potentialAction: {
     "@type": "SearchAction",

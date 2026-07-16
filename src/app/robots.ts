@@ -9,7 +9,7 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ["/api/"],
       },
     ],
-    sitemap: "https://mercuryparts.in/sitemap.xml",
-    host: "https://mercuryparts.in",
+    sitemap: "https://mercurytraders.in/sitemap.xml",
+    host: "https://mercurytraders.in",
   };
 }

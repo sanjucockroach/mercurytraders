@@ -1,5 +1,6 @@
 import { Navbar } from "@/components/navbar";
 import { CartDrawer } from "@/components/cart-drawer";
+import { LeadChatbot } from "@/components/lead-chatbot";
 import { Hero } from "@/components/sections/hero";
 import { Marquee } from "@/components/sections/marquee";
 import { SearchVehicle } from "@/components/sections/search-vehicle";
@@ -34,6 +35,7 @@ export default function Home() {
         <Contact />
       </main>
       <Footer />
+      <LeadChatbot />
     </>
   );
 }

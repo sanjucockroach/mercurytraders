@@ -2,29 +2,35 @@
 
 import { motion } from "framer-motion";
 import { MessageCircle, Phone, Mail, MapPin, Clock, ArrowRight } from "lucide-react";
-import { WHATSAPP_NUMBER } from "@/lib/cart-store";
 
 const contactItems = [
   {
     icon: MessageCircle,
     label: "WhatsApp",
-    value: "+91 90000 12345",
-    href: `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Hi Mercury! I have a question about a spare part.")}`,
+    value: "+91 84476 66288",
+    href: `https://wa.me/918447666288?text=${encodeURIComponent("Hi Mercury Traders! I have a question about a spare part.")}`,
     sub: "Fastest response · 9am–9pm",
   },
   {
     icon: Phone,
-    label: "Call support",
-    value: "+91 90000 12345",
-    href: "tel:+919000012345",
+    label: "Call us",
+    value: "+91 84476 66288",
+    href: "tel:+918447666288",
     sub: "Mon–Sat · 9am–7pm IST",
   },
   {
     icon: Mail,
     label: "Email",
-    value: "support@mercuryparts.in",
-    href: "mailto:support@mercuryparts.in",
+    value: "sales@mercurytraders.in",
+    href: "mailto:sales@mercurytraders.in",
     sub: "Reply within 4 working hours",
+  },
+  {
+    icon: MapPin,
+    label: "Visit our store",
+    value: "1556, A Church Road, Kashmere Gate",
+    href: "https://maps.google.com/?q=1556+A+Church+Road+Kashmere+Gate+Delhi+110006",
+    sub: "Delhi - 110006",
   },
 ];
 
@@ -99,19 +105,18 @@ export function Contact() {
             />
             <div className="relative">
               <h3 className="font-display text-xl font-semibold tracking-display-sm">
-                Mercury HQ
+                Mercury Traders
               </h3>
               <p className="text-canvas/60 text-sm mt-1">
-                Dispatch centre &amp; support hub
+                Store &amp; dispatch centre · Kashmere Gate, Delhi
               </p>
 
               <div className="mt-7 space-y-5">
                 <div className="flex items-start gap-3">
                   <MapPin className="h-5 w-5 text-primary shrink-0 mt-0.5" />
                   <div>
-                    <div className="font-medium text-sm">Mercury House, Sector 32</div>
-                    <div className="text-canvas/60 text-sm">Gurugram, Haryana 122002</div>
-                    <div className="text-canvas/60 text-sm">India</div>
+                    <div className="font-medium text-sm">1556, A Church Road, Kashmere Gate</div>
+                    <div className="text-canvas/60 text-sm">Delhi - 110006, India</div>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
@@ -140,7 +145,7 @@ export function Contact() {
               </div>
 
               <a
-                href={`https://wa.me/${WHATSAPP_NUMBER}`}
+                href="https://wa.me/918447666288"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="mt-7 w-full inline-flex items-center justify-center gap-2 h-12 rounded-input bg-primary text-white text-sm font-semibold hover:brightness-110 active:scale-[0.99] transition-all"
