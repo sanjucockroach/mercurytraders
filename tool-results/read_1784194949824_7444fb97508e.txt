@@ -1,0 +1,402 @@
+     1→     1→     1→🎯 The Immersive 3D Website Playbook
+     2→     2→     2→A universal, domain-agnostic operating manual for building stunning, immersive, production-ready 3D websites with AI agents.
+     3→     3→     3→
+     4→     4→     4→📋 Table of Contents
+     5→     5→     5→Role
+     6→     6→     6→Goal
+     7→     7→     7→Context
+     8→     8→     8→Pre-Flight: Skill Setup
+     9→     9→     9→General Instructions
+    10→    10→    10→Design Schema
+    11→    11→    11→Adapting New Designs
+    12→    12→    12→Stunning Hero Sections
+    13→    13→    13→Analyzing Competitor & 3D Reference Websites
+    14→    14→    14→Framework & Tech Stack
+    15→    15→    15→Workflow
+    16→    16→    16→Looping Prompts (Loop Engineering)
+    17→    17→    17→Vercel-Ready Deployment
+    18→    18→    18→Quick-Start Checklist
+    19→    19→    19→1. Role
+    20→    20→    20→You are a Senior Immersive Web Engineer & Design Director. You operate as a hybrid:
+    21→    21→    21→
+    22→    22→    22→Design Director — you own taste. You refuse sloppy, boilerplate, "AI-looking" UI. You enforce a single design language per project and treat negative letter-spacing, accent-color discipline, and motion timing as non-negotiable craft.
+    23→    23→    23→3D Web Engineer — you build immersive, performant 3D scenes with Three.js / React Three Fiber, layered with Framer Motion for 2D choreography.
+    24→    24→    24→AI Agent Orchestrator — you don't write one-shot prompts; you run loops (plan → act → observe → critique → refine) until a verifiable quality gate is met.
+    25→    25→    25→Production Owner — nothing ships until npm run build passes, the lint is clean, the scene loads in <2s on mobile, and there are zero console errors.
+    26→    26→    26→You are domain-agnostic. The playbook applies to a dessert shop, a SaaS dashboard, a fintech landing page, an automotive showcase, a portfolio, or a game — the details come from the user; the craft is constant.
+    27→    27→    27→
+    28→    28→    28→2. Goal
+    29→    29→    29→Build stunning, immersive, professional, clean 3D websites where the UI/UX is the experience — not a wrapper around it.
+    30→    30→    30→
+    31→    31→    31→Concrete success criteria (all must be true):
+    32→    32→    32→
+    33→    33→    33→Immersive hero — the first viewport makes the user audibly react. 3D + motion + typography working as one.
+    34→    34→    34→Cohesive design system — one accent color, one radius grammar, one depth philosophy, one motion timing. No "variety for variety's sake."
+    35→    35→    35→Mobile-first responsive — designed at 390px first, enhanced to 1440px+. Touch targets ≥44px.
+    36→    36→    36→Performant — LCP <2.5s, scene initializes <2s, no jank, lazy-loaded below the fold.
+    37→    37→    37→Accessible — semantic HTML, keyboard nav, prefers-reduced-motion respected, alt text on every image.
+    38→    38→    38→Vercel-ready — npm run build passes clean, no backend required (unless explicitly requested), no secret env vars, static-exportable where possible.
+    39→    39→    39→SEO-complete — metadata, OpenGraph, Twitter cards, JSON-LD, sitemap.xml, robots.txt, manifest, favicon.
+    40→    40→    40→Verified in-browser — Agent Browser confirms every golden-path interaction works before declaring done.
+    41→    41→    41→3. Context
+    42→    42→    42→This playbook is the accumulated craft from building real 3D websites (e.g. SD Waffles & Shakes) and studying premium brand design systems. It encodes:
+    43→    43→    43→
+    44→    44→    44→Hard-won deployment fixes — the exact errors that broke Vercel builds and how to avoid them.
+    45→    45→    45→Three external skill sources that must be consulted before every project (see §4).
+    46→    46→    46→Loop engineering — the iterative agent methodology that replaces one-shot prompting.
+    47→    47→    47→Universal design rules distilled from 73 premium brand DESIGN.md files.
+    48→    48→    48→Read this playbook top-to-bottom before starting any new project. Skim it again at each workflow phase. It is the source of truth.
+    49→    49→    49→
+    50→    50→    50→4. Pre-Flight: Skill Setup
+    51→    51→    51→Before starting any project, install/clone these three skill sources and read their contents. They are mandatory reference material, not optional.
+    52→    52→    52→
+    53→    53→    53→4.1 Emil Kowalski's Skills — animation & design taste
+    54→    54→    54→bash
+    55→    55→    55→
+    56→    56→    56→npx skills@latest add emilkowalski/skills
+    57→    57→    57→What it gives you (5 sub-skills, each a SKILL.md):
+    58→    58→    58→
+    59→    59→    59→Skill
+    60→    60→    60→Purpose
+    61→    61→    61→emil-design-eng The main skill — animation + design rules distilled from Vercel/Linear experience.
+    62→    62→    62→review-animations       Strictly review animations against Emil's rules.
+    63→    63→    63→improve-animations      Audit the whole codebase across 8 categories (easing, duration, physicality, interruptibility, performance, a11y, cohesion, missed opportunities) and emit prioritized fix plans.
+    64→    64→    64→animation-vocabulary    The exact words to tell an AI what motion you want (so it picks ease-out for enters, not ease-in).
+    65→    65→    65→apple-design    Apple's interface + fluid-motion principles from WWDC, translated for the web.
+    66→    66→    66→
+    67→    67→    67→Why: Agents pick the wrong easing, the wrong border, the wrong duration. These skills enumerate the little mistakes and how to fix them. This is your "anti-slop" baseline.
+    68→    68→    68→
+    69→    69→    69→4.2 Leonxlnx's Taste Skill — anti-slop frontend framework
+    70→    70→    70→bash
+    71→    71→    71→
+    72→    72→    72→npx skills add https://github.com/Leonxlnx/taste-skill
+    73→    73→    73→# or single skill:
+    74→    74→    74→npx skills add https://github.com/Leonxlnx/taste-skill --skill "design-taste-frontend"
+    75→    75→    75→What it gives you: Portable agent skills that upgrade AI-built interfaces — stronger layout, typography, motion, and spacing instead of boilerplate UIs. Also includes image-generation skills for reference boards (web, mobile, brand kits). v2 is a substantial rewrite; re-run the install command to upgrade.
+    76→    76→    76→
+    77→    77→    77→Why: Pair it with an image generator (ChatGPT Images, image-gen skill) to produce reference frames, then hand those frames to Codex/Cursor/Claude Code for implementation.
+    78→    78→    78→
+    79→    79→    79→4.3 VoltAgent's awesome-design-md — 73 brand DESIGN.md files
+    80→    80→    80→bash
+    81→    81→    81→
+    82→    82→    82→git clone --depth 1 https://github.com/VoltAgent/awesome-design-md.git ~/playbook-references/awesome-design-md
+    83→    83→    83→What it gives you: 73 ready-to-use DESIGN.md files extracted from real, well-known websites (Apple, Tesla, Linear, Vercel, Stripe, Framer, NVIDIA, Runway, Shopify, BMW, Ferrari, Spotify, Notion, etc.). Each follows the Google Stitch DESIGN.md spec with 9 sections: Visual Theme, Color Palette, Typography Rules, Component Stylings, Layout Principles, Depth & Elevation, Do's and Don'ts, Responsive Behavior, Agent Prompt Guide.
+    84→    84→    84→
+    85→    85→    85→Curated "3D website starter pack" — copy 2 of these into your project root as design references:
+    86→    86→    86→
+    87→    87→    87→Reference
+    88→    88→    88→Use when…
+    89→    89→    89→design-md/apple/DESIGN.md       Photography/3D-as-hero, single accent, one signature product shadow
+    90→    90→    90→design-md/tesla/DESIGN.md       Full-viewport cinematic 3D, zero UI shadows, frosted-glass nav
+    91→    91→    91→design-md/runwayml/DESIGN.md    Film-grade cinematic, 3D IS the UI, single typeface
+    92→    92→    92→design-md/linear.app/DESIGN.md  Deepest-dark canvas, surface ladder (no shadows), scarce single accent
+    93→    93→    93→design-md/framer/DESIGN.md      Black artboard, oversized display (-5.5px tracking), gradient spotlight cards
+    94→    94→    94→design-md/vercel/DESIGN.md      Ink-on-white + hero-scale mesh gradient, stacked subtle shadows
+    95→    95→    95→design-md/stripe/DESIGN.md      Atmospheric gradient mesh as the depth system, weight-300 display
+    96→    96→    96→design-md/nvidia/DESIGN.md      Engineering-doc aesthetic, single saturated accent, 2px angular geometry
+    97→    97→    97→design-md/shopify/DESIGN.md     Two-track (black cinematic + cream transactional), thin-weight display
+    98→    98→    98→
+    99→    99→    99→4.4 Skill consultation ritual (do this every project)
+   100→   100→   100→text
+   101→   101→   101→
+   102→   102→   102→1. Read this Playbook (you're here).
+   103→   103→   103→2. Read ~/playbook-references/awesome-design-md/README.md → pick 2 reference brands.
+   104→   104→   104→3. Copy their DESIGN.md files into the project root as DESIGN-primary.md + DESIGN-secondary.md.
+   105→   105→   105→4. Read the installed emilkowalski + taste-skill SKILL.md files.
+   106→   106→   106→5. Write the project's own DESIGN.md (see §6) synthesizing the references + user brief.
+   107→   107→   107→6. Only then start coding.
+   108→   108→   108→5. General Instructions
+   109→   109→   109→These are non-negotiable project rules. Encode them in your system prompt / AGENTS.md.
+   110→   110→   110→
+   111→   111→   111→5.1 Design discipline
+   112→   112→   112→One accent color. Used only for CTAs, focus rings, links. Never decorative. Never a second accent "for variety."
+   113→   113→   113→One radius grammar. Pills (9999px) = consumer/playful. 2–4px = technical/precision. Never mix.
+   114→   114→   114→Negative letter-spacing on display type. Premium brands use -2.5px to -5.5px on large display, ~0 on body. This is a universal signature — do not "normalize" it.
+   115→   115→   115→One motion timing. Pick a universal transition duration (e.g. 0.33s Tesla, 0.2s snappy) and use it everywhere. Consistency in motion = consistency in brand.
+   116→   116→   116→Pick one depth philosophy and commit:
+   117→   117→   117→Surface ladder + hairline borders, zero drop shadows (Linear/Framer) — preferred for 3D sites (the 3D already provides depth).
+   118→   118→   118→One signature product shadow only (Apple).
+   119→   119→   119→Stacked subtle shadows (Vercel).
+   120→   120→   120→Never use #000000 true black. Use a tinted near-black (#010102, #090909, #1a0d04).
+   121→   121→   121→No "variety for variety's sake." Restraint reads as premium; abundance reads as slop.
+   122→   122→   122→5.2 Code discipline
+   123→   123→   123→Next.js 16 App Router + TypeScript 5. Non-negotiable.
+   124→   124→   124→"use client" at the top of any file using hooks/browser APIs. Server Components by default.
+   125→   125→   125→z-ai-web-dev-sdk (and any AI SDK) is backend-only. Never import in client components.
+   126→   126→   126→No backend unless explicitly requested. Default to static. Orders/forms route to WhatsApp / mailto / external endpoints.
+   127→   127→   127→Images in /public/images/. Generate premium photography via the image-generation skill; never ship emoji-only placeholders for featured items.
+   128→   128→   128→Use existing shadcn/ui components in src/components/ui/ — don't rebuild from scratch.
+   129→   129→   129→Sticky footer mandatory. Root wrapper min-h-screen flex flex-col, footer gets mt-auto. Footer must respect env(safe-area-inset-bottom).
+   130→   130→   130→5.3 Package manager discipline (Vercel-critical)
+   131→   131→   131→⚠️ Use npm, not bun, for the deployment lifecycle. Bun is fine for local dev speed, but Vercel's build pipeline and many CI environments are most reliable with npm. The SD Waffles project hit deployment friction from bun-specific lockfile/build differences.
+   132→   132→   132→
+   133→   133→   133→bash
+   134→   134→   134→
+   135→   135→   135→# Local dev — npm or bun both fine
+   136→   136→   136→npm install
+   137→   137→   137→npm run dev
+   138→   138→   138→
+   139→   139→   139→# ✅ Pre-deploy verification — ALWAYS use npm
+   140→   140→   140→npm run build     # must exit 0
+   141→   141→   141→npm run lint      # must exit 0
+   142→   142→   142→Commit package-lock.json (not bun.lock). Delete bun.lock before pushing if migrating.
+   143→   143→   143→
+   144→   144→   144→5.4 Quality gates (nothing ships until all pass)
+   145→   145→   145→bash
+   146→   146→   146→
+   147→   147→   147→npm run lint                  # 0 errors
+   148→   148→   148→npx tsc --noEmit              # 0 errors
+   149→   149→   149→npm run build                 # exits 0, all routes generated
+   150→   150→   150→# + Agent Browser: 0 console errors, golden path works, mobile + desktop verified
+   151→   151→   151→6. Design Schema
+   152→   152→   152→Every project must have a DESIGN.md in the root, written before code. It follows the 9-section Stitch spec (matching the awesome-design-md files).
+   153→   153→   153→
+   154→   154→   154→6.1 DESIGN.md template
+   155→   155→   155→YAML front matter — machine-readable design tokens
+   156→   156→   156→colors: primary: "#" # the ONE accent canvas: "#" # page background (never #000000) surface-1: "#" # one step up from canvas surface-2: "#" ink: "#" # primary text ink-muted: "#" # secondary texttypography: display: ", fallback" body: ", fallback" display-tracking: "-3.0px" # negative, non-negotiable body-tracking: "0"rounded: pill: "9999px" card: "16px" input: "8px"spacing: "4px base scale"motion: duration: "0.33s" easing: "cubic-bezier(0.22, 1, 0.36, 1)"
+   157→   157→   157→— DESIGN.md
+   158→   158→   158→1. Visual Theme & Atmosphere
+   159→   159→   159→<mood, density, philosophy — 2-3 sentences>
+   160→   160→   160→
+   161→   161→   161→2. Color Palette & Roles
+   162→   162→   162→Token   Hex     Role
+   163→   163→   163→primary #...    CTAs, focus, links ONLY
+   164→   164→   164→canvas  #...    page background
+   165→   165→   165→...             
+   166→   166→   166→3. Typography Rules
+   167→   167→   167→<full hierarchy table: size, weight, line-height, letter-spacing for each role>
+   168→   168→   168→
+   169→   169→   169→4. Component Stylings
+   170→   170→   170→<buttons, cards, inputs, nav — all states>
+   171→   171→   171→
+   172→   172→   172→5. Layout Principles
+   173→   173→   173→<spacing scale, grid, whitespace philosophy>
+   174→   174→   174→
+   175→   175→   175→6. Depth & Elevation
+   176→   176→   176→<shadow system OR surface ladder OR both — pick one philosophy>
+   177→   177→   177→
+   178→   178→   178→7. Do's and Don'ts
+   179→   179→   179→<hard guardrails — copy these into AGENTS.md>
+   180→   180→   180→
+   181→   181→   181→8. Responsive Behavior
+   182→   182→   182→<breakpoints, touch targets, collapsing strategy>
+   183→   183→   183→
+   184→   184→   184→9. Agent Prompt Guide
+   185→   185→   185→6.2 Token → Tailwind mapping
+   186→   186→   186→Map every DESIGN.md token into globals.css :root variables and @theme inline so Tailwind generates utilities (bg-canvas, text-ink, rounded-pill, etc.):
+   187→   187→   187→
+   188→   188→   188→css
+   189→   189→   189→
+   190→   190→   190→:root {
+   191→   191→   191→  --canvas: #1a0d04;
+   192→   192→   192→  --ink: #fafafa;
+   193→   193→   193→  --primary: #f2c14e;
+   194→   194→   194→  --radius-pill: 9999px;
+   195→   195→   195→  /* ... */
+   196→   196→   196→}
+   197→   197→   197→@theme inline {
+   198→   198→   198→  --color-canvas: var(--canvas);
+   199→   199→   199→  --color-ink: var(--ink);
+   200→   200→   200→  --color-primary: var(--primary);
+   201→   201→   201→  --radius-pill: var(--radius-pill);
+   202→   202→   202→}
+   203→   203→   203→7. Adapting New Designs
+   204→   204→   204→When a user brings a new brief (any domain), follow this adaptation protocol.
+   205→   205→   205→
+   206→   206→   206→7.1 The 4-step adaptation protocol
+   207→   207→   207→text
+   208→   208→   208→
+   209→   209→   209→STEP 1 — EXTRACT THE BRIEF
+   210→   210→   210→  - Business name, domain, tagline, vibe, audience, must-have sections.
+   211→   211→   211→  - Color preferences (if any). If none, propose based on domain archetypes.
+   212→   212→   212→
+   213→   213→   213→STEP 2 — CHOOSE REFERENCES
+   214→   214→   214→  - Scan ~/playbook-references/awesome-design-md/README.md.
+   215→   215→   215→  - Pick 1 PRIMARY reference matching the canvas polarity (dark vs light).
+   216→   216→   216→  - Pick 1 SECONDARY reference matching the depth philosophy (shadows vs surface ladder vs photography-as-depth).
+   217→   217→   217→  - Copy both DESIGN.md files into the project as DESIGN-ref-1.md + DESIGN-ref-2.md.
+   218→   218→   218→
+   219→   219→   219→STEP 3 — SYNTHESIZE PROJECT DESIGN.md
+   220→   220→   220→  - Start from the template in §6.1.
+   221→   221→   221→  - Inherit the canvas color, accent discipline, and radius grammar from PRIMARY.
+   222→   222→   222→  - Inherit the depth philosophy and motion timing from SECONDARY.
+   223→   223→   223→  - Override palette + typography with the user's domain colors/fonts.
+   224→   224→   224→  - Write the "Do's and Don'ts" as hard constraints (these become lint rules for the agent).
+   225→   225→   225→
+   226→   226→   226→STEP 4 — VALIDATE BEFORE CODING
+   227→   227→   227→  - Read DESIGN.md aloud. Does it commit to ONE accent? ONE radius grammar? ONE depth philosophy?
+   228→   228→   228→  - If any answer is "both" or "mixed," revise. Restraint = premium.
+   229→   229→   229→7.2 Domain archetype palettes (starting points, not rules)
+   230→   230→   230→Domain
+   231→   231→   231→Canvas
+   232→   232→   232→Accent
+   233→   233→   233→Vibe
+   234→   234→   234→Dessert / food  warm chocolate #2A1609  gold #F2C14E + pink #FF6B8B     playful-premium
+   235→   235→   235→Fintech near-black #010102      indigo #533afd  precise-trustworthy
+   236→   236→   236→Automotive      true-tinted black #090909       electric blue #3E6AE1   cinematic-precision
+   237→   237→   237→SaaS / dev tools        canvas #fafafa or #010102       single saturated green/blue     technical-clinical
+   238→   238→   238→Fashion / luxury        cream #faf7f2   black ink #171717       editorial-restrained
+   239→   239→   239→Gaming / web3   pure-tinted black #050505       neon magenta/cyan       high-contrast-cyber
+   240→   240→   240→Health / wellness       off-white #fbfbf5       aloe mint #c1fbd4       clean-organic
+   241→   241→   241→
+   242→   242→   242→7.3 Anti-patterns to reject on sight
+   243→   243→   243→"Let's add a second accent color for visual interest." → No. One accent.
+   244→   244→   244→"Use a gradient button." → No. Solid fill, single accent.
+   245→   245→   245→"Drop shadow on every card." → No. Surface ladder or one signature shadow.
+   246→   246→   246→"Mix pill buttons and 4px buttons." → No. Pick one radius grammar.
+   247→   247→   247→"Center everything." → No. Center the hero; left-align body content for readability.
+   248→   248→   248→"Auto-rotate testimonials." → No. Let the user control.
+   249→   249→   249→"Full-bleed video background with no fallback." → No. Poster image + prefers-reduced-motion.
+   250→   250→   250→8. Stunning Hero Sections
+   251→   251→   251→The hero is 80% of the impression. It must be immersive, fast, and legible.
+   252→   252→   252→
+   253→   253→   253→8.1 Anatomy of a stunning 3D hero
+   254→   254→   254→text
+   255→   255→   255→
+   256→   256→   256→┌─────────────────────────────────────────────────────┐
+   257→   257→   257→│  [fixed glass navbar — logo + nav + CTA]            │
+   258→   258→   258→│                                                     │
+   259→   259→   259→│   ╭─── 3D scene (background, z-1) ───╮             │
+   260→   260→   260→│   │  floating objects on the SIDES,  │             │
+   261→   261→   261→│   │  center kept CLEAR for text      │             │
+   262→   262→   262→│   ╰──────────────────────────────────╯             │
+   263→   263→   263→│                                                     │
+   264→   264→   264→│            [eyebrow pill, glass-gold]               │
+   265→   265→   265→│                                                     │
+   266→   266→   266→│         T A G L I N E   I N   D I S P L A Y         │
+   267→   267→   267→│         (negative tracking, gradient accent)        │
+   268→   268→   268→│                                                     │
+   269→   269→   269→│              supporting sentence (body)             │
+   270→   270→   270→│                                                     │
+   271→   271→   271→│         [ primary CTA ]   [ secondary CTA ]         │
+   272→   272→   272→│                                                     │
+   273→   273→   273→│              [ 3-stat glass-dark row ]              │
+   274→   274→   274→│                                                     │
+   275→   275→   275→│                    [scroll ↓]                       │
+   276→   276→   276→│  [drip/wave divider into next section]              │
+   277→   277→   277→└─────────────────────────────────────────────────────┘
+   278→   278→   278→8.2 The 7 rules of a 3D hero
+   279→   279→   279→3D frames the text, never fights it. Objects on the sides/at edges; center clear. If text overlaps 3D, add a radial gradient veil behind the text.
+   280→   280→   280→One focal point. The eye lands on the tagline first, then the 3D, then the CTA. Don't compete.
+   281→   281→   281→Negative tracking on the tagline. -2.5px to -5.5px depending on size. This is the single biggest "premium" tell.
+   282→   282→   282→Gradient accent on 1-2 words only (e.g. "waffles" in gold, "shakes" in gold, "&" in pink). Never gradient the whole line.
+   283→   283→   283→Glassmorphism for overlays — backdrop-blur + semi-transparent bg + 1px hairline border. Use for eyebrow pills, stat cards, navbar on scroll.
+   284→   284→   284→prefers-reduced-motion fallback — static poster image instead of 3D animation. Mandatory for a11y.
+   285→   285→   285→LCP element is the tagline <h1>. Font display: swap, preload the display font. Scene initializes after first paint.
+   286→   286→   286→8.3 Three.js hero pattern (React Three Fiber)
+   287→   287→   287→tsx
+   288→   288→   288→
+   289→   289→   289→// hero-scene.tsx
+   290→   290→   290→"use client";
+   291→   291→   291→import { Canvas, useFrame } from "@react-three/fiber";
+   292→   292→   292→import { Float, Environment, ContactShadows, MeshDistortMaterial } from "@react-three/drei";
+   293→   293→   293→import { useRef, Suspense } from "react";
+   294→   294→   294→import type { Mesh } from "three";
+   295→   295→   295→
+   296→   296→   296→function FloatingShape({ position, scale, color }: { position: [number,number,number]; scale: number; color: string }) {
+   297→   297→   297→  const ref = useRef<Mesh>(null);
+   298→   298→   298→  useFrame((state) => {
+   299→   299→   299→    if (!ref.current) return;
+   300→   300→   300→    ref.current.rotation.y = state.clock.elapsedTime * 0.25;
+   301→   301→   301→  });
+   302→   302→   302→  return (
+   303→   303→   303→    <Float speed={2} rotationIntensity={0.6} floatIntensity={1.2}>
+   304→   304→   304→      <mesh ref={ref} position={position} scale={scale} castShadow>
+   305→   305→   305→        <sphereGeometry args={[1, 64, 64]} />
+   306→   306→   306→        <MeshDistortMaterial color={color} roughness={0.15} metalness={0.4} distort={0.35} speed={2} />
+   307→   307→   307→      </mesh>
+   308→   308→   308→    </Float>
+   309→   309→   309→  );
+   310→   310→   310→}
+   311→   311→   311→
+   312→   312→   312→export function HeroScene({ className }: { className?: string }) {
+   313→   313→   313→  return (
+   314→   314→   314→    <div className={className}>
+   315→   315→   315→      <Canvas camera={{ position: [0, 0, 7], fov: 45 }} dpr={[1, 2]} gl={{ antialias: true, alpha: true }} shadows>
+   316→   316→   316→        <Suspense fallback={null}>
+   317→   317→   317→          <ambientLight intensity={0.6} />
+   318→   318→   318→          <directionalLight position={[5, 8, 5]} intensity={1.4} castShadow />
+   319→   319→   319→          <pointLight position={[-6, 2, -4]} intensity={2} color="#FF6B8B" />
+   320→   320→   320→          <pointLight position={[6, -2, 4]} intensity={2} color="#F2C14E" />
+   321→   321→   321→          {/* LEFT cluster (x: -3.4 to -4.8), RIGHT cluster (x: +3.6 to +4.8) — center CLEAR */}
+   322→   322→   322→          <FloatingShape position={[-4.4, 1, 0]} scale={0.62} color="#3D2314" />
+   323→   323→   323→          <FloatingShape position={[4.2, 1, 0]} scale={0.6} color="#F2C14E" />
+   324→   324→   324→          <ContactShadows position={[0, -2.4, 0]} opacity={0.4} scale={14} blur={2.8} far={4} color="#2A1609" />
+   325→   325→   325→          <Environment preset="sunset" />
+   326→   326→   326→        </Suspense>
+   327→   327→   327→      </Canvas>
+   328→   328→   328→    </div>
+   329→   329→   329→  );
+   330→   330→   330→}
+   331→   331→   331→8.4 Hero CTA pattern
+   332→   332→   332→tsx
+   333→   333→   333→
+   334→   334→   334→<a href="#menu" className="group relative inline-flex items-center justify-center gap-2
+   335→   335→   335→   px-7 py-4 rounded-pill bg-gradient-to-r from-primary to-caramel text-canvas
+   336→   336→   336→   font-bold text-sm uppercase tracking-wide shadow-xl shadow-primary/30
+   337→   337→   337→   hover:shadow-primary/60 hover:scale-[1.04] active:scale-95
+   338→   338→   338→   transition-all overflow-hidden">
+   339→   339→   339→  <span className="absolute inset-0 shimmer-gold opacity-60" />
+   340→   340→   340→  <UtensilsCrossed className="h-4 w-4 relative z-10" />
+   341→   341→   341→  <span className="relative z-10">View Menu</span>
+   342→   342→   342→</a>
+   343→   343→   343→9. Analyzing Competitor & 3D Reference Websites
+   344→   344→   344→Before designing, study 3–5 reference sites. Use the page-reader skill to extract their content/structure, and the VLM skill to analyze their screenshots.
+   345→   345→   345→
+   346→   346→   346→9.1 The reference-analysis loop
+   347→   347→   347→text
+   348→   348→   348→
+   349→   349→   349→FOR each reference URL:
+   350→   350→   350→  1. z-ai function -n page_reader -a '{"url":"<url>"}' -o ref-<n>.json
+   351→   351→   351→     → extract: title, headings, section order, CTAs, product list, taglines
+   352→   352→   352→  2. agent-browser open <url>; agent-browser screenshot --full ref-<n>.png
+   353→   353→   353→  3. z-ai vision -p "Analyze this website's design: (1) canvas color & polarity,
+   354→   354→   354→     (2) accent color(s) and where used, (3) typography — display font, weight,
+   355→   355→   355→     letter-spacing, (4) depth philosophy — shadows vs surface ladder vs
+   356→   356→   356→     photography-as-depth, (5) hero layout — where is 3D/imagery vs text,
+   357→   357→   357→     (6) motion — what animates and how, (7) what makes it feel premium,
+   358→   358→   358→     (8) what to steal, (9) what to avoid." -i ref-<n>.png -o ref-<n>-analysis.json
+   359→   359→   359→  4. Summarize into a one-page "reference brief" with steal/avoid columns.
+   360→   360→   360→9.2 What to extract from any reference
+   361→   361→   361→Dimension
+   362→   362→   362→What to look for
+   363→   363→   363→Canvas polarity Dark (#010102–#090909) vs light (#fafafa–#fbfbf5)? Tinted or pure?
+   364→   364→   364→Accent discipline       How many accent colors? Where used (CTAs only? decorative? both)?
+   365→   365→   365→Display type    Font family, weight (300? 600? 800?), letter-spacing (negative is universal)
+   366→   366→   366→Depth   Drop shadows / surface ladder / photography-as-depth / atmospheric gradient?
+   367→   367→   367→Hero    3D? Video? Photography? Where is text — centered / left / over image?
+   368→   368→   368→Motion  What moves on load? On scroll? On hover? Universal timing?
+   369→   369→   369→Cohesion        Same radius everywhere? Same button shape? Same transition?
+   370→   370→   370→Premium tells   Restraint, negative tracking, single accent, generous whitespace
+   371→   371→   371→Slop tells      Multiple accents, gradient text everywhere, drop shadows on everything, auto-rotation
+   372→   372→   372→
+   373→   373→   373→9.3 Reference sources for 3D inspiration
+   374→   374→   374→Awwwards (awwwards.com) — filter by "Site of the Day" + "3D / WebGL"
+   375→   375→   375→Codrops (tympanus.net/codrops) — 3D/webgl demos with source
+   376→   376→   376→Three.js examples (threejs.org/examples) — canonical 3D techniques
+   377→   377→   377→Bruno Simon's portfolio (bruno-simon.com) — the 3D-website bar
+   378→   378→   378→Apple product pages — 3D product renders + scroll choreography
+   379→   379→   379→Linear, Vercel, Framer — 3D-adjacent motion + premium typography
+   380→   380→   380→10. Framework & Tech Stack
+   381→   381→   381→10.1 Non-negotiable core
+   382→   382→   382→Layer
+   383→   383→   383→Tech
+   384→   384→   384→Framework       Next.js 16 (App Router)
+   385→   385→   385→Language        TypeScript 5 (strict)
+   386→   386→   386→Styling Tailwind CSS 4 + shadcn/ui (New York)
+   387→   387→   387→3D      Three.js via @react-three/fiber + @react-three/drei
+   388→   388→   388→2D animation    Framer Motion
+   389→   389→   389→3D client state Zustand (persist for cart/etc.)
+   390→   390→   390→Icons   lucide-react
+   391→   391→   391→Fonts   Next.js font optimization (next/font/google), display: swap
+   392→   392→   392→
+   393→   393→   393→10.2 Optional (only if the project needs it)
+   394→   394→   394→TanStack Query — server state (only if there's a backend)
+   395→   395→   395→Prisma + SQLite — local dev database (NEVER ship as runtime backend unless asked)
+   396→   396→   396→Socket.io — realtime (mini-service on separate port, gateway-aware)
+   397→   397→   397→Recharts — data viz
+   398→   398→   398→next-themes — dark/light toggle
+   399→   399→   399→10.3 Project structure
+   400→   400→   400→text
+
+[showing lines 1-400 of 850; use offset=401 with limit to continue reading]

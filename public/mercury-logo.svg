@@ -1,0 +1,8 @@
+<svg width="240" height="240" viewBox="0 0 240 240" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Mercury logo">
+  <!-- Full vertical lockup: M mark + MERCURY + AUTOMOTIVE SPARE PARTS -->
+  <rect width="240" height="240" rx="40" fill="#FFFFFF"/>
+  <path d="M56 40 L56 152 L80 152 L80 80 L120 128 L160 80 L160 152 L184 152 L184 40 L160 40 L120 88 L80 40 Z" fill="#FF5722"/>
+  <path d="M62 156 L82 144 L82 152 L62 164 Z" fill="#FF5722" opacity="0.55"/>
+  <text x="120" y="186" text-anchor="middle" font-family="'Space Grotesk', 'Inter', system-ui, sans-serif" font-size="26" font-weight="700" letter-spacing="-1px" fill="#14110F">MERCURY</text>
+  <text x="120" y="208" text-anchor="middle" font-family="'Inter', system-ui, sans-serif" font-size="9" font-weight="600" letter-spacing="2.5px" fill="#6B6764">AUTOMOTIVE SPARE PARTS</text>
+</svg>

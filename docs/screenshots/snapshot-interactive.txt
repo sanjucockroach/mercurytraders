@@ -1,0 +1,7 @@
+- heading "boodmo is currently down for scheduled maintenance." [level=2, ref=e1]
+- link "info@boodmo.com" [ref=e4]
+- link "AVAILABLE ON THE App Store" [ref=e2]
+- link "GET IT ON Google Play" [ref=e3]
+- link [ref=e5]
+- link [ref=e6]
+- link [ref=e7]

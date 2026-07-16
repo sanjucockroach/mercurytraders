@@ -1,0 +1,289 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* =========================================================================
+   MERCURY — Design tokens (from DESIGN.md)
+   ONE accent: #FF5722. Tinted near-black ink. Tinted off-white canvas.
+   Surface ladder + hairline borders. Zero shadows by default.
+   ========================================================================= */
+
+@theme inline {
+  /* Brand */
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+
+  /* Canvas / surfaces / ink */
+  --color-canvas: var(--canvas);
+  --color-surface-1: var(--surface-1);
+  --color-surface-2: var(--surface-2);
+  --color-ink: var(--ink);
+  --color-ink-muted: var(--ink-muted);
+  --color-hairline: var(--hairline);
+
+  /* shadcn aliases (kept for component compatibility) */
+  --color-background: var(--canvas);
+  --color-foreground: var(--ink);
+  --color-card: var(--surface-1);
+  --color-card-foreground: var(--ink);
+  --color-popover: var(--surface-1);
+  --color-popover-foreground: var(--ink);
+  --color-secondary: var(--surface-2);
+  --color-secondary-foreground: var(--ink);
+  --color-muted: var(--surface-2);
+  --color-muted-foreground: var(--ink-muted);
+  --color-accent: var(--surface-2);
+  --color-accent-foreground: var(--ink);
+  --color-destructive: var(--destructive);
+  --color-border: var(--hairline);
+  --color-input: var(--hairline);
+  --color-ring: var(--primary);
+  --color-sidebar: var(--surface-1);
+  --color-sidebar-foreground: var(--ink);
+  --color-sidebar-primary: var(--primary);
+  --color-sidebar-primary-foreground: var(--primary-foreground);
+  --color-sidebar-accent: var(--surface-2);
+  --color-sidebar-accent-foreground: var(--ink);
+  --color-sidebar-border: var(--hairline);
+  --color-sidebar-ring: var(--primary);
+
+  /* Functional (never decorative) */
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+
+  /* Radius grammar — precision */
+  --radius-pill: 9999px;
+  --radius-card: 10px;
+  --radius-input: 6px;
+  --radius-chip: 4px;
+  /* shadcn aliases */
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 10px;
+  --radius-xl: 14px;
+
+  /* Fonts */
+  --font-sans: var(--font-inter);
+  --font-display: var(--font-space-grotesk);
+  --font-mono: var(--font-geist-mono);
+}
+
+:root {
+  /* Brand — the ONE accent */
+  --primary: #ff5722;
+  --primary-foreground: #ffffff;
+
+  /* Canvas / surfaces */
+  --canvas: #f4f2ee;
+  --surface-1: #ffffff;
+  --surface-2: #eceae5;
+
+  /* Ink */
+  --ink: #14110f;
+  --ink-muted: #6b6764;
+  --hairline: #ddd9d2;
+
+  /* Functional */
+  --success: #16a34a;
+  --warning: #d97706;
+  --destructive: #dc2626;
+
+  --radius: 10px;
+}
+
+@layer base {
+  * {
+    @apply border-hairline;
+    border-color: var(--hairline);
+  }
+  html {
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    scroll-behavior: smooth;
+  }
+  body {
+    background-color: var(--canvas);
+    color: var(--ink);
+    font-family: var(--font-inter), system-ui, sans-serif;
+    font-feature-settings: "cv11", "ss01";
+  }
+  ::selection {
+    background-color: var(--primary);
+    color: #ffffff;
+  }
+  /* Custom scrollbar — subtle, technical */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--canvas);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--hairline);
+    border-radius: 9999px;
+    border: 2px solid var(--canvas);
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--ink-muted);
+  }
+  /* Display utility — negative tracking, the premium tell */
+  .font-display {
+    font-family: var(--font-space-grotesk), system-ui, sans-serif;
+    letter-spacing: -0.03em;
+  }
+  .tracking-display {
+    letter-spacing: -0.04em;
+  }
+  .tracking-display-sm {
+    letter-spacing: -0.02em;
+  }
+  /* Eyebrow label — uppercase, positive tracking */
+  .eyebrow {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  /* Part-number / SKU — monospace technical tell */
+  .font-mono {
+    font-family: var(--font-geist-mono), ui-monospace, monospace;
+  }
+}
+
+/* =========================================================================
+   Animations — universal timing 0.33s cubic-bezier(0.22,1,0.36,1)
+   ========================================================================= */
+
+@keyframes mercury-marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.animate-marquee {
+  animation: mercury-marquee 32s linear infinite;
+}
+.animate-marquee-slow {
+  animation: mercury-marquee 60s linear infinite;
+}
+
+@keyframes mercury-shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+.shimmer-primary {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 87, 34, 0.12) 50%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: mercury-shimmer 2.4s ease-in-out infinite;
+}
+
+@keyframes mercury-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+.animate-float {
+  animation: mercury-float 6s ease-in-out infinite;
+}
+
+@keyframes mercury-pulse-ring {
+  0% { box-shadow: 0 0 0 0 rgba(255, 87, 34, 0.4); }
+  70% { box-shadow: 0 0 0 12px rgba(255, 87, 34, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(255, 87, 34, 0); }
+}
+.animate-pulse-ring {
+  animation: mercury-pulse-ring 2s ease-out infinite;
+}
+
+@keyframes mercury-grain {
+  0%, 100% { transform: translate(0, 0); }
+  10% { transform: translate(-2%, -5%); }
+  30% { transform: translate(3%, 2%); }
+  50% { transform: translate(-1%, 4%); }
+  70% { transform: translate(4%, -3%); }
+  90% { transform: translate(-3%, 3%); }
+}
+
+/* =========================================================================
+   Utilities
+   ========================================================================= */
+
+/* Signature shadow — ONE allowed, on hero/featured 3D-tilt cards only */
+.shadow-signature {
+  box-shadow: 0 2px 8px -2px rgba(20, 17, 15, 0.06);
+}
+
+/* Hairline border helper */
+.border-hairline {
+  border-color: var(--hairline);
+}
+
+/* Glass overlay (hero stat cards / navbar on scroll) */
+.glass-ink {
+  background-color: rgba(20, 17, 15, 0.82);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+.glass-light {
+  background-color: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--hairline);
+}
+
+/* Radial veil — behind hero text when overlapping 3D */
+.hero-veil {
+  background: radial-gradient(
+    ellipse 52% 60% at 50% 50%,
+    rgba(244, 242, 238, 0.95) 0%,
+    rgba(244, 242, 238, 0.78) 35%,
+    rgba(244, 242, 238, 0.35) 60%,
+    transparent 80%
+  );
+}
+
+/* Dotted grid background — technical tell */
+.bg-dotgrid {
+  background-image: radial-gradient(circle, var(--hairline) 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+
+/* Scroll-snap horizontal peek (mobile product rail) */
+.snap-peek {
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.snap-peek::-webkit-scrollbar { display: none; }
+.snap-peek > * { scroll-snap-align: start; }
+
+/* Safe area — sticky footer */
+.pb-safe {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* =========================================================================
+   prefers-reduced-motion — static fallbacks (mandatory a11y)
+   ========================================================================= */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .animate-marquee,
+  .animate-marquee-slow,
+  .animate-float,
+  .shimmer-primary,
+  .animate-pulse-ring {
+    animation: none !important;
+  }
+}

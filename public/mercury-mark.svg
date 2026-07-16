@@ -1,0 +1,9 @@
+<svg width="240" height="240" viewBox="0 0 240 240" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Mercury logo mark">
+  <!-- Mercury "M" mark — geometric, angular, with a subtle speed-line slash.
+       Single accent: #FF5722. Works at 24px (favicon) and 240px (hero). -->
+  <rect width="240" height="240" rx="40" fill="#14110F"/>
+  <!-- The M: two outer verticals + a V-notch center, built from one continuous angular path -->
+  <path d="M56 64 L56 176 L80 176 L80 104 L120 152 L160 104 L160 176 L184 176 L184 64 L160 64 L120 112 L80 64 Z" fill="#FF5722"/>
+  <!-- speed slash accent through the M's left leg (automotive motion tell) -->
+  <path d="M62 180 L82 168 L82 176 L62 188 Z" fill="#FF5722" opacity="0.55"/>
+</svg>

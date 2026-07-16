@@ -1,0 +1,16 @@
+- main
+  - heading "boodmo is currently down for scheduled maintenance." [level=2, ref=e1]
+  - paragraph
+    - link "info@boodmo.com" [ref=e4]
+- link "AVAILABLE ON THE App Store" [ref=e2]
+- link "GET IT ON Google Play" [ref=e3]
+- contentinfo
+  - image
+  - StaticText "India's biggest online marketplace for car spare parts"
+  - list
+    - listitem [level=1]
+      - link [ref=e5]
+    - listitem [level=1]
+      - link [ref=e6]
+    - listitem [level=1]
+      - link [ref=e7]

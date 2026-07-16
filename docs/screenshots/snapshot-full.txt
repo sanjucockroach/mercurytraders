@@ -1,0 +1,36 @@
+- banner
+  - SvgRoot
+    - StaticText "spare parts expert"
+- main
+  - heading "boodmo is currently down for scheduled maintenance." [level=2, ref=e1]
+  - paragraph
+    - StaticText "Please accept our apologies."
+    - LineBreak "\n"
+    - StaticText "If you need any support, please write us "
+    - link "info@boodmo.com" [ref=e4]
+- StaticText "Download "
+- StaticText "Our Mobile App"
+- paragraph
+  - StaticText "And get the full boodmo experience on the go"
+- link "AVAILABLE ON THE App Store" [ref=e2]
+  - image
+  - StaticText "AVAILABLE ON THE"
+  - StaticText "App Store"
+- link "GET IT ON Google Play" [ref=e3]
+  - image
+  - StaticText "GET IT ON"
+  - StaticText "Google Play"
+- contentinfo
+  - image
+  - StaticText "India's biggest online marketplace for car spare parts"
+  - list
+    - listitem [level=1]
+      - link [ref=e5]
+        - image
+    - listitem [level=1]
+      - link [ref=e6]
+        - image
+    - listitem [level=1]
+      - link [ref=e7]
+        - image
+  - StaticText "© 2015-2021 Smart Parts Online Pvt. Ltd."
