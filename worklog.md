@@ -108,3 +108,31 @@ Stage Summary:
 - All Playbook quality gates green: lint clean, tsc clean, 0 console errors, golden path works, hero ≥8/10, mobile + desktop verified, sticky footer confirmed.
 - Design discipline upheld: ONE orange accent (#FF5722), negative letter-spacing on all display type, precision radius grammar (6/10/4px), surface-ladder + hairline depth (zero shadows except one signature on tilt cards), tinted off-white canvas (#f4f2ee), tinted near-black ink (#14110f), monospace part-numbers, prefers-reduced-motion respected, 3D hero with center clear.
 - 13 sections: 3D Hero → Offers Marquee → Search-by-Vehicle → Categories → Featured Products → Why Mercury → Brands → How It Works → Stats → Articles → Testimonials → Contact → Sticky Footer.
+
+---
+Task ID: 11-13
+Agent: Lead (Z.ai Code)
+Task: Update business details to Mercury Traders, build lead-gen chatbot, push to GitHub.
+
+Work Log:
+- Updated business name to "Mercury Traders" across: layout.tsx (SEO title, description, keywords, OpenGraph, Twitter, JSON-LD schema), manifest.ts, sitemap.ts, robots.ts, navbar.tsx (tel: link), contact.tsx (WhatsApp/call/email/address items + HQ card), footer.tsx (copyright + address + phone).
+- Updated WhatsApp number to 918447666288 across: cart-store.ts, contact.tsx, lead-chatbot.tsx.
+- Updated address to "1556, A Church Road, Kashmere Gate, Delhi - 110006" across layout.tsx JSON-LD, contact.tsx HQ card + contact items, footer.tsx copyright line.
+- Updated email to sales@mercurytraders.in, domain to mercurytraders.in.
+- Built lead-gen chatbot (src/components/lead-chatbot.tsx): floating button (bottom-right, orange, pulse-ring animation) → chat panel with bot/user message bubbles. Pure state machine (no LLM, no backend). Flow: greet → ask_name → ask_phone → ask_car → ask_part → ask_message → done. At "done": shows lead summary card + "Send lead via WhatsApp" button → opens wa.me/918447666288 with formatted lead (Name, Phone, Vehicle, Part(s), Notes). Features: typing indicator (3-dot animation), back button, progress bar, restart option, sent confirmation, mobile full-screen / desktop floating panel, prefers-reduced-motion respected.
+- Added LeadChatbot to page.tsx (after Footer).
+- Verified chatbot golden path via Agent Browser: opened chat → filled name (Sanju) → phone (9876543210) → car (Maruti Swift 2018 VDI) → part (front brake pads + oil filter) → skipped message → reached done state → verified WhatsApp URL contains all lead details correctly → VLM audit 9/10 "premium and well-designed".
+- Set up .gitignore per Playbook §13.2: excluded node_modules, .next, .env, .db, bun.lock, Caddyfile, .zscripts, tool-results, upload, download, docs (local analysis/screenshots), examples, mini-services, skills, brand-analysis.json, --timeout (stray file).
+- Generated package-lock.json via `npm install --package-lock-only` (Playbook §5.3: commit package-lock.json, not bun.lock).
+- Created README.md with business details, features, tech stack, project structure, no-backend architecture explanation.
+- Pre-push checklist (Playbook §13.3): lint 0 errors ✓, tsc 0 errors ✓, no secrets staged ✓, no junk staged ✓.
+- Untracked 59 files from prior commits that violated Playbook (.env, .zscripts/, Caddyfile, bun.lock, db/custom.db, docs/screenshots/*, tool-results/, upload/, download/, examples/, mini-services/, --timeout, brand-analysis.json, docs/boodmo-analysis.md, docs/brand-analysis.json, docs/mercury-brand-logo.png). Final tracked: 106 files, all clean.
+- Committed (b359f54): "feat: Mercury Traders immersive 3D auto-parts website".
+- Pushed to https://github.com/sanjucockroach/mercurytraders.git (main branch). Token used for auth, then sanitized from local git config.
+
+Stage Summary:
+- Business details updated: Mercury Traders, 1556 A Church Road, Kashmere Gate, Delhi-110006, +91 84476 66288.
+- Lead-gen chatbot complete: no LLM, no backend, walks visitor through 5 questions, sends formatted lead to WhatsApp 918447666288. VLM audit 9/10.
+- Code pushed to GitHub: https://github.com/sanjucockroach/mercurytraders.git (commit b359f54, branch main, 106 files).
+- All quality gates green: lint clean, tsc clean, dev server 200s, 0 console errors.
+- Security note: GitHub PAT token was used for push and immediately removed from local config. User should revoke the token at https://github.com/settings/tokens since it was shared in plaintext.
